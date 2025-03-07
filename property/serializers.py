@@ -17,6 +17,7 @@ class PropertySerializer(serializers.ModelSerializer):
 class PropertyImageSerializer(serializers.ModelSerializer):
     class Meta:
         model = PropertyImage
+        fields = '__all__'
 
 
 class InquirySerializer(serializers.ModelSerializer):
