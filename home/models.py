@@ -6,7 +6,7 @@ class Testimonial(models.Model):
     name = models.CharField(max_length=100)
     location = models.CharField(max_length=255)
     testimonial = models.TextField()
-    image = models.ImageField(upload_to='testimonials/', blank=True, null=True)
+    image = models.TextField()
     rating = models.PositiveIntegerField(default=5, choices=[(i, str(i)) for i in range(1, 6)]) 
 
     def __str__(self):
