@@ -1,6 +1,6 @@
 from rest_framework import viewsets
-from .models import Property, PropertyImage, PropertyType, Inquiry
-from .serializers import PropertySerializer, PropertyImageSerializer, PropertyTypeSerializer, InquirySerializer
+from .models import Property, PropertyImage, PropertyType, Inquiry, Feature
+from .serializers import PropertySerializer, PropertyImageSerializer, PropertyTypeSerializer, InquirySerializer, FeatureSerializer
 
 
 class PropertyTypeViewSet(viewsets.ModelViewSet):
@@ -21,3 +21,8 @@ class PropertyImageViewSet(viewsets.ModelViewSet):
 class InquiryViewSet(viewsets.ModelViewSet):
     queryset = Inquiry.objects.all()
     serializer_class = InquirySerializer
+
+
+class FeatureViewSet(viewsets.ModelViewSet):
+    queryset = Feature.objects.all()
+    serializer_class = FeatureSerializer

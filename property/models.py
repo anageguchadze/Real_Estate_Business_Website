@@ -23,6 +23,14 @@ class Property(models.Model):
         return self.title
 
 
+class Feature(models.Model):
+    #ძირითადი მახასიათებლები და კეთილმოწყობა
+    property = models.ForeignKey(Property, on_delete=models.CASCADE, related_name="features")
+    short_description = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.name
+
 class PropertyImage(models.Model):
     property = models.ForeignKey(Property, related_name="images", on_delete=models.CASCADE)
     image = models.TextField()
