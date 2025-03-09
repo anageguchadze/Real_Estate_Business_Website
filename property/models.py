@@ -18,6 +18,7 @@ class Property(models.Model):
     size = models.PositiveIntegerField(help_text="Size in square meters")
     bedrooms = models.PositiveIntegerField(default=0)
     bathrooms = models.PositiveIntegerField(default=0)
+    build_year = models.PositiveIntegerField(null=True, blank=True)
 
     def __str__(self):
         return self.title
