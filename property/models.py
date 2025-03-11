@@ -30,7 +30,7 @@ class Feature(models.Model):
     short_description = models.CharField(max_length=255)
 
     def __str__(self):
-        return self.name
+        return self.short_description
 
 class PropertyImage(models.Model):
     property = models.ForeignKey(Property, related_name="images", on_delete=models.CASCADE)

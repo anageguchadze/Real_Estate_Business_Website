@@ -4,9 +4,9 @@ from django.db import models
 class Testimonial(models.Model):
     #what our clients say
     title = models.CharField(max_length=100)
-    text = models.TextField()
-    location = models.CharField(max_length=255)
     testimonial = models.TextField()
+    name = models.CharField(max_length=255)
+    location = models.CharField(max_length=255)
     image = models.TextField()
     rating = models.PositiveIntegerField(default=5, choices=[(i, str(i)) for i in range(1, 6)]) 
 

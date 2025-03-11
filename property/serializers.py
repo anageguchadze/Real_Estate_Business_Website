@@ -8,11 +8,6 @@ class PropertyTypeSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
-class PropertySerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Property
-        fields = "__all__"
-
 
 class PropertyImageSerializer(serializers.ModelSerializer):
     class Meta:
@@ -30,3 +25,11 @@ class FeatureSerializer(serializers.ModelSerializer):
     class Meta:
         model = Feature
         fields = '__all__'
+
+
+class PropertySerializer(serializers.ModelSerializer):
+    images = PropertyImageSerializer(many=True, read_only=True)  # Related images
+    features = FeatureSerializer(many=True, read_only=True)
+    class Meta:
+        model = Property
+        fields = "__all__"
