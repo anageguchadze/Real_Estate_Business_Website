@@ -3,7 +3,8 @@ from django.db import models
 
 class Testimonial(models.Model):
     #what our clients say
-    name = models.CharField(max_length=100)
+    title = models.CharField(max_length=100)
+    text = models.TextField()
     location = models.CharField(max_length=255)
     testimonial = models.TextField()
     image = models.TextField()
