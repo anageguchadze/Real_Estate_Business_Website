@@ -20,11 +20,11 @@ class PropertyViewSet(viewsets.ModelViewSet):
     filterset_class = PropertyFilter
 
     # Enable search on location and property type name
-    search_fields = ['location', 'property_type__name']  # Ensure property_type.name exists
+    search_fields = ['location', 'property_type__name', 'price', 'size', 'build_year']  # Ensure property_type.name exists
 
-    # Enable ordering by price, size, and build year
-    ordering_fields = ['price', 'size', 'build_year']
-    ordering = ['price']  # Default ordering by price
+    # # Enable ordering by price, size, and build year
+    # ordering_fields = ['price', 'size', 'build_year']
+    # ordering = ['price']  # Default ordering by price
 
 
 class PropertyImageViewSet(viewsets.ModelViewSet):
