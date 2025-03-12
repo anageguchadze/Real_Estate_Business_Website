@@ -15,21 +15,13 @@ class PropertyTypeViewSet(viewsets.ModelViewSet):
 class PropertyViewSet(viewsets.ModelViewSet):
     queryset = Property.objects.all()
     serializer_class = PropertySerializer
-
-    # Enable filtering, searching, and ordering
     filter_backends = [DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter]
-
-    # Assign updated PropertyFilter for advanced filtering
     filterset_class = PropertyFilter
-
-    # Enable search by location and property type name
     search_fields = ["location", "property_type__name"]
-
-    # Enable ordering by price, size, and build year
     ordering_fields = ["price", "size", "build_year"]
-    ordering = ["price"]  # Default ordering by price
+    ordering = ["price"]
+    ordering = ["build_year"]
 
-    # Optimize filtering to only return distinct properties
     def get_queryset(self):
         return Property.objects.all().distinct()
 
