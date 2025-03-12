@@ -61,8 +61,10 @@ class PropertyImageViewSet(viewsets.ModelViewSet):
 class InquiryViewSet(viewsets.ModelViewSet):
     queryset = Inquiry.objects.all()
     serializer_class = InquirySerializer
-
+    pagination_class = None
 
 class FeatureViewSet(viewsets.ModelViewSet):
     queryset = Feature.objects.all()
     serializer_class = FeatureSerializer
+
+

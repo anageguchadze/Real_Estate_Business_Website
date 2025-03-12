@@ -19,7 +19,7 @@ class InquirySerializer(serializers.ModelSerializer):
     class Meta:
         model = Inquiry
         fields = '__all__'
-
+       
 
 class FeatureSerializer(serializers.ModelSerializer):
     class Meta:
