@@ -61,18 +61,18 @@ class Inquiry(models.Model):
     message = models.TextField(blank=True, null=True)
 
 
-    def send_inquiry_email(self):
-        if not self.email:
-            return
+    # def send_inquiry_email(self):
+    #     if not self.email:
+    #         return
         
-        subject = 'Message confirmation'
-        message = f'Hello {self.first_name} {self.last_name}, we have received your message.\n\nA company representative will contact you. \n\nThank you!'
-        send_mail(subject,message,'anamr6211@gmail.com',[self.email],fail_silently=False)
+    #     subject = 'Message confirmation'
+    #     message = f'Hello {self.first_name} {self.last_name}, we have received your message.\n\nA company representative will contact you. \n\nThank you!'
+    #     send_mail(subject,message,'anamr6211@gmail.com',[self.email],fail_silently=False)
 
 
-    def save(self, *args, **kwargs):
-        super().save(*args, **kwargs)
-        self.send_inquiry_email()
+    # def save(self, *args, **kwargs):
+    #     super().save(*args, **kwargs)
+    #     self.send_inquiry_email()
 
     def __str__(self):
         return f"Inquiry from {self.first_name} {self.last_name} for {self.property.title}"

@@ -157,13 +157,13 @@ REST_FRAMEWORK = {
 # EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS') == 'True'
 # DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_FROM_EMAIL')
 
-EMAIL_HOST_PASSWORD = 'mzff gcbi qgaw bekk'
-EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-EMAIL_HOST = "smtp.gmail.com"
-EMAIL_PORT = 587
-EMAIL_HOST_USER = 'anamr6211@gmail.com'
-EMAIL_USE_TLS = True
-DEFAULT_FROM_EMAIL = 'anamr6211@gmail.com'
+# EMAIL_HOST_PASSWORD = 'mzff gcbi qgaw bekk'
+# EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+# EMAIL_HOST = "smtp.gmail.com"
+# EMAIL_PORT = 587
+# EMAIL_HOST_USER = 'anamr6211@gmail.com'
+# EMAIL_USE_TLS = True
+# DEFAULT_FROM_EMAIL = 'anamr6211@gmail.com'
 
 
 LOGGING_DIR = "/var/log/django"
