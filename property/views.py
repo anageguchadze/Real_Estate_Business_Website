@@ -5,6 +5,8 @@ from .filters import PropertyFilter
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from drf_yasg.utils import swagger_auto_schema
+from drf_yasg import openapi
 
 
 class PropertyTypeViewSet(viewsets.ModelViewSet):
@@ -17,7 +19,22 @@ class PropertyViewSet(viewsets.ModelViewSet):
     serializer_class = PropertySerializer
     filterset_class = PropertyFilter
     search_fields = ["location", "property_type__name"]
+    filter_backends = [DjangoFilterBackend, filters.SearchFilter]
    
+    @swagger_auto_schema(manual_parameters=[
+        openapi.Parameter('search', openapi.IN_QUERY, description="Search by location or property type", type=openapi.TYPE_STRING),
+        openapi.Parameter('location', openapi.IN_QUERY, description="Exact location", type=openapi.TYPE_STRING),
+        openapi.Parameter('property_type', openapi.IN_QUERY, description="Exact property type", type=openapi.TYPE_STRING),
+        openapi.Parameter('build_year', openapi.IN_QUERY, description="Year the property was built", type=openapi.TYPE_INTEGER),
+        openapi.Parameter('min_price', openapi.IN_QUERY, description="Minimum price", type=openapi.TYPE_INTEGER),
+        openapi.Parameter('max_price', openapi.IN_QUERY, description="Maximum price", type=openapi.TYPE_INTEGER),
+        openapi.Parameter('price_range', openapi.IN_QUERY, description="Custom price range like '100000-300000' or '500000+'", type=openapi.TYPE_STRING),
+        openapi.Parameter('min_size', openapi.IN_QUERY, description="Minimum size", type=openapi.TYPE_INTEGER),
+        openapi.Parameter('max_size', openapi.IN_QUERY, description="Maximum size", type=openapi.TYPE_INTEGER),
+        openapi.Parameter('size_range', openapi.IN_QUERY, description="Custom size range like '100-200' or '500+'", type=openapi.TYPE_STRING),
+    ])
+    def list(self, request, *args, **kwargs):
+        return super().list(request, *args, **kwargs)
 
     def get_queryset(self):
         return Property.objects.all().distinct()
