@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'property',
     'home',
     'about',
+    'services',
 ]
 
 MIDDLEWARE = [
