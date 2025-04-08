@@ -1,3 +1,6 @@
 from django.contrib import admin
+from .models import SellingService, ManagementService, InvestmentService
 
-# Register your models here.
+admin.site.register(SellingService)
+admin.site.register(ManagementService)
+admin.site.register(InvestmentService)
