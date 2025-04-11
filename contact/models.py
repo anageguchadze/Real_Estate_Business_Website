@@ -1,24 +1,23 @@
 from django.db import models
 
-INQUIRY_CHOICES = [
-    ('buying', 'Buying'),
-    ('selling', 'Selling'),
-    ('investment', 'Investment'),
-    ('other', 'Other'),
-]
+class InquiryType(models.Model):
+    name = models.CharField(max_length=50)
 
-HEARD_FROM_CHOICES = [
-    ('google', 'Google'),
-    ('social_media', 'Social Media'),
-    ('referral', 'Referral'),
-    ('other', 'Other'),
-]
+    def __str__(self):
+        return self.name
 
-OFFICE_TYPE_CHOICES = [
-    ('headquarters', 'Headquarters'),
-    ('regional', 'Regional Office'),
-    ('international', 'International Office'),
-]
+
+class HeardFrom(models.Model):
+    name = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.name
+
+class OfficeType(models.Model):
+    name = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.name
 
 
 class ContactMessage(models.Model):
@@ -26,8 +25,8 @@ class ContactMessage(models.Model):
     last_name = models.CharField(max_length=100)
     email = models.EmailField()
     phone = models.CharField(max_length=20)
-    inquiry_type = models.CharField(max_length=50, choices=INQUIRY_CHOICES)
-    heard_about = models.CharField(max_length=50, choices=HEARD_FROM_CHOICES)
+    inquiry_type = models.ForeignKey(InquiryType, on_delete=models.CASCADE)
+    heard_about = models.ForeignKey(HeardFrom, on_delete=models.CASCADE)
     message = models.TextField()
     agree_to_terms = models.BooleanField(default=False)
     
@@ -42,7 +41,7 @@ class OfficeLocation(models.Model):
     description = models.TextField()
     phone = models.CharField(max_length=20, blank=True, null=True)
     email = models.EmailField(blank=True, null=True)
-    office_type = models.CharField(max_length=50, choices=OFFICE_TYPE_CHOICES)
+    office_type = models.ForeignKey(OfficeType, on_delete=models.CASCADE)
     google_maps_link = models.URLField(blank=True, null=True)
 
     def __str__(self):
