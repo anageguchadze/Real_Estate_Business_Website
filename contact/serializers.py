@@ -20,16 +20,17 @@ class OfficeTypeSerializer(serializers.ModelSerializer):
 
 
 class ContactMessageSerializer(serializers.ModelSerializer):
-    inquiry_type = InquiryTypeSerializer()
-    heard_about = HeardFromSerializer()
+    inquiry_type = serializers.PrimaryKeyRelatedField(queryset=InquiryType.objects.all())
+    heard_about = serializers.PrimaryKeyRelatedField(queryset=HeardFrom.objects.all())
 
     class Meta:
         model = ContactMessage
         fields = '__all__'
 
 
+
 class OfficeLocationSerializer(serializers.ModelSerializer):
-    office_type = OfficeTypeSerializer()
+    office_type = serializers.PrimaryKeyRelatedField(queryset=OfficeType.objects.all())
 
     class Meta:
         model = OfficeLocation
