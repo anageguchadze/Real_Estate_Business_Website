@@ -25,8 +25,8 @@ class ContactMessage(models.Model):
     last_name = models.CharField(max_length=100)
     email = models.EmailField()
     phone = models.CharField(max_length=20)
-    inquiry_type = models.ForeignKey(InquiryType, on_delete=models.CASCADE)
-    heard_about = models.ForeignKey(HeardFrom, on_delete=models.CASCADE)
+    inquiry_type = models.ForeignKey(InquiryType, on_delete=models.CASCADE, blank=True, null=True)
+    heard_about = models.ForeignKey(HeardFrom, on_delete=models.CASCADE, blank=True, null=True)
     message = models.TextField()
     agree_to_terms = models.BooleanField(default=False)
     
@@ -41,7 +41,7 @@ class OfficeLocation(models.Model):
     description = models.TextField()
     phone = models.CharField(max_length=20, blank=True, null=True)
     email = models.EmailField(blank=True, null=True)
-    office_type = models.ForeignKey(OfficeType, on_delete=models.CASCADE)
+    office_type = models.ForeignKey(OfficeType, on_delete=models.CASCADE, blank=True, null=True)
     google_maps_link = models.URLField(blank=True, null=True)
 
     def __str__(self):
